@@ -1,0 +1,20 @@
+trigger:
+  - main
+
+pool:
+  name: "Default"
+
+variables:
+  Major: 4
+  Minor: 45
+  BuildCounter: $[counter('',4)]
+  Patch: $[counter(format('{0}.{1}', variables['Major'], variables['Minor']), 0)]
+
+steps:
+- script: |
+    echo "Major: $(Major)"
+    echo "Minor: $(Minor)"
+    echo "Patch: $(BuildNumber)"
+    echo "$(Major).$(Minor).$(Patch)"
+    echo "$(BuildCounter)"
+  displayName: 'Show Variables'
