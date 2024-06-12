@@ -4,14 +4,23 @@ trigger:
 pool:
   name: Default
 
-steps:
+#steps:
 #- task: UseDotNet@2
 #  inputs:
 #    packageType: 'sdk'
 #    version: '5.x'
-    
+
+variables:
+  Major: 4
+  Minor: 45
+  BuildCounter: $[counter('',4)]
+  Patch: $[counter(format('{0}.{1}', variables['Major'], variables['Minor']), 0)]
+
+steps:
 - script: |
-    echo "Pipeline Test Start"
-    echo "$[counter('', 4)]"
-    echo "Pipeline Test End"
-  displayName: "Run Script"
+    echo "Major: $(Major)"
+    echo "Minor: $(Minor)"
+    echo "Patch: $(BuildNumber)"
+    echo "$(Major).$(Minor).$(Patch)"
+    echo "$(BuildCounter)"
+  displayName: 'Show Variables'
