@@ -1,12 +1,20 @@
 trigger:
-- main
+  - main
 
 pool:
-  name: Default
-  
+  vmImage: 'ubuntu-latest'
+
 variables:
-  buildConfiguration: 'Release'
+  Major: 4
+  Minor: 45
+  BuildCounter: $(counter('',4))
+  Patch: $[counter(format('{0}.{1}', variables['Major'], variables['Minor']), 0)]
 
 steps:
-- script: dotnet build --configuration $(buildConfiguration)
-  displayName: 'dotnet build $(buildConfiguration)'
+- script: |
+    echo "Major: $(Major)"
+    echo "Minor: $(Minor)"
+    echo "Patch: $(BuildNumber)"
+    echo "$(Major).$(Minor).$(Patch)"
+    echo "$(BuildCounter)"
+  displayName: 'Show Variables'
