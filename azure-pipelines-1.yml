@@ -13,4 +13,4 @@ steps:
 - script: |
     dotnet --version
     echo "Pipeline Test"
-    displayName: "Run Script"
+  displayName: "Run Script"
