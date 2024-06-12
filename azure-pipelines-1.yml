@@ -5,12 +5,13 @@ pool:
   name: Default
 
 steps:
-- task: UseDotNet@2
-  inputs:
-    packageType: 'sdk'
-    version: '5.x'
+#- task: UseDotNet@2
+#  inputs:
+#    packageType: 'sdk'
+#    version: '5.x'
     
 - script: |
-    dotnet --version
-    echo "Pipeline Test"
+    echo "Pipeline Test Start"
+    echo "$[counter('', 4)]"
+    echo "Pipeline Test End"
   displayName: "Run Script"
