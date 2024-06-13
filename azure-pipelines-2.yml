@@ -5,10 +5,11 @@ pool:
   name: "Default"
 
 variables:
-  Major: 4
-  Minor: 45
+  Major: 1
+  Minor: 1
   BuildCounter: $[counter('',4)]
   Patch: $[counter(format('{0}.{1}', variables['Major'], variables['Minor']), 0)]
+
 
 steps:
 - script: |
