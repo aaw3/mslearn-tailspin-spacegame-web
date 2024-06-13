@@ -21,6 +21,7 @@ steps:
     echo "Major: $(Major)"
     echo "Minor: $(Minor)"
     echo "Patch: $(BuildNumber)"
-    echo "$(Major).$(Minor).$(Patch)"
+    echo "Regular Release $(Major).$(Minor).$(Patch)"
+    echo "Stage Release $(StageMajor).$(StageMinor).$(StagePatch)"
     echo "$(BuildCounter)"
   displayName: 'Show Variables'
