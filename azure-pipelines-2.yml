@@ -6,10 +6,15 @@ pool:
 
 variables:
   Major: 1
-  Minor: 1
+  Minor: 2
   BuildCounter: $[counter('',4)]
   Patch: $[counter(format('{0}.{1}', variables['Major'], variables['Minor']), 0)]
 
+# Updated Minor from 1 to 2
+# Add StagePatch
+  StageMajor: 1
+  StageMinor: 1
+  StagePatch: $[counter(format('{0}.{1}', variables['StageMajor'], variables['StageMinor']), 0)]
 
 steps:
 - script: |
