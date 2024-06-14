@@ -6,22 +6,24 @@ pool:
 
 variables:
   Major: 1
-  Minor: 3
+  Minor: 4
   BuildCounter: $[counter('',4)]
-  Patch: $[counter(format('{0}.{1}', variables['Major'], variables['Minor']), 0)]
+  PatchSeed: format('{0}.{1}', variables['Major'], variables['Minor'])
+  Patch: $[counter(variables['PatchSeed'], 0)]
 
 # Updated Minor from 1 to 2
 # Add StagePatch
   StageMajor: 1
-  StageMinor: 2
-  StagePatch: $[counter(format('{0}.{1}', variables['StageMajor'], variables['StageMinor']), 0)]
+  StageMinor: 3
+  StagePatchSeed: format('{0}.{1}s', variables['StageMajor'], variables['StageMinor'])
+  StagePatch: $[counter(variables['StagePatchSeed'], 0)]
 
 steps:
 - script: |
     echo "Major: $(Major)"
     echo "Minor: $(Minor)"
     echo "Patch: $(BuildNumber)"
-    echo "Regular Release $(Major).$(Minor).$(Patch)"
-    echo "Stage Release $(StageMajor).$(StageMinor).$(StagePatch)"
+    echo "Regular Release $(Major).$(Minor).$(Patch) using seed $(PatchSeed)"
+    echo "Stage Release $(StageMajor).$(StageMinor).$(StagePatch) using seed $(StageSeed)"
     echo "$(BuildCounter)"
   displayName: 'Show Variables'
