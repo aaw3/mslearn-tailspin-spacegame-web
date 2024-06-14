@@ -8,14 +8,14 @@ variables:
   Major: 1
   Minor: 4
   BuildCounter: $[counter('',4)]
-  PatchSeed: format('{0}.{1}', variables['Major'], variables['Minor'])
+  PatchSeed: $[format('{0}.{1}', variables['Major'], variables['Minor'])]
   Patch: $[counter(variables['PatchSeed'], 0)]
 
 # Updated Minor from 1 to 2
 # Add StagePatch
   StageMajor: 1
   StageMinor: 3
-  StagePatchSeed: format('{0}.{1}s', variables['StageMajor'], variables['StageMinor'])
+  StagePatchSeed: $[format('{0}.{1}s', variables['StageMajor'], variables['StageMinor'])]
   StagePatch: $[counter(variables['StagePatchSeed'], 0)]
 
 steps:
@@ -24,6 +24,6 @@ steps:
     echo "Minor: $(Minor)"
     echo "Patch: $(BuildNumber)"
     echo "Regular Release $(Major).$(Minor).$(Patch) using seed $(PatchSeed)"
-    echo "Stage Release $(StageMajor).$(StageMinor).$(StagePatch) using seed $(StageSeed)"
+    echo "Stage Release $(StageMajor).$(StageMinor).$(StagePatch) using seed $(StagePatchSeed)"
     echo "$(BuildCounter)"
   displayName: 'Show Variables'
