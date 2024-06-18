@@ -15,8 +15,8 @@ variables:
 # Add StagePatch
   StageMajor: 1
   StageMinor: 4
-  StagePatchSeed: $[format('{0}.{1}s', variables['StageMajor'], variables['StageMinor'])]
-  StagePatch: $[counter(variables['StagePatchSeed'], 0)]
+#  StagePatchSeed: $[format('{0}.{1}s', variables['StageMajor'], variables['StageMinor'])]
+#  StagePatch: $[counter(variables['StagePatchSeed'], 0)]
 
 steps:
 - script: |
